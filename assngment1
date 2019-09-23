@@ -1,0 +1,155 @@
+using System;
+using System.Collections;
+
+namespace Assignment1
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int a = 1, b = 22;
+            SelfDividingNumbers(a, b);
+            Console.Write("\n");
+
+
+            int n2 = 7;
+            printSeries(n2);
+            Console.Write("\n");
+
+            int n3 = 5;
+            printTriangle(n3);
+            Console.Write("\n");
+
+
+            int[] Jewels = new int[] { 6, 9 };
+            int[] Stones= new int[] { 4, 6, 1, 6, 9, 0, 9, 69 };
+            int r4 = numJewelsInStones(Jewels, Stones);
+            Console.WriteLine(r4);
+
+
+            //int[] r5 = getLargestCommonSubArray(arr1, arr2);
+            //Console.WriteLine(r5);
+
+            // solvePuzzle();
+        }
+
+        public static void SelfDividingNumbers(int k, int l)
+        {
+            int remainder = 0;
+            //Iterating the numbers between k and l
+            for (int i = k; i <= l; i++)
+            {
+                //we will use num to input the self-dividing numbers
+                int n= i;
+                //we will use div to get every digit of a number
+                int div = i;
+                //Printing all the self.-dividing numbers using the While loop
+                while (div != 0)
+                {
+                    //After dividing the numberby 10, we get every digit by taking out the remainder, for example: 128%10->8
+                    remainder = div % 10;
+                    //Removing the  multiple of 10
+                    if (remainder == 0)
+                        break;
+                    //Removing the number that wouldnot be divisible by the digit it contains
+                    if (n % remainder != 0)
+                        break;
+                    //For example: 128/10->12; 12->1
+                    div = div / 10;
+                    //Inputing the self-dividing numbers
+                    if (div == 0)
+                        Console.Write(" " + n);
+                    
+                }
+
+            }
+        }
+
+
+
+        public static void printSeries(int t)
+        {
+            try
+            {
+                int p, q, r;
+
+                for (p = 0, q = 1; p < t; q++)
+                {
+                    for (r = 1; (p < t) && (r <= q); r++)
+                    {
+                        Console.Write(q);
+                        p++;
+
+
+                    }
+                }
+
+
+                // Write the code below
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Exception occured while computing printSeries()");
+            }
+        }
+
+
+        public static void printTriangle(int t)
+        {
+            try
+            {
+                // Write the code below
+                if (t < 0)
+                    return;
+                int p, q, r;
+                for (p = t; p >= 1; p--)
+                {
+                    for (q = t; q > p; q--)
+                    {
+                        Console.Write(" ");
+                    }
+                    for (r = 1; r < 2 * p; r++)
+                    {
+                        Console.Write("*");
+
+                    }
+                    Console.WriteLine();
+                }
+
+            }
+            catch
+            {
+
+                Console.WriteLine("Exception has occured while computing the  printTriangle()");
+            }
+        }
+        public static int numJewelsInStones(int[] J, int[] S)
+        {
+            try
+            {
+                int count = 0;
+                // Write the code below
+                for (int p = 0; p < J.Length; p++)
+                {
+                    for (int j = 0; j < S.Length; j++)
+                    {
+                        if (J[p] == S[j])
+                        {
+                            count++;
+                            //Console.WriteLine(J[p]);
+                        }
+                    }
+                }
+                return count;
+            }
+            catch
+            {
+                Console.WriteLine("Exception has occured while computing the numJewelsInStones()");
+            }
+
+            return 0;
+        }
+    }
+}
